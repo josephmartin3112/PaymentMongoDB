@@ -3,9 +3,13 @@ package com.example.payments.service;
 import com.example.payments.dto.Paymentdto;
 import com.example.payments.model.Payment;
 import com.example.payments.repository.PaymentRepository;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -95,5 +99,29 @@ public class PaymentService {
     // 6. Delete payment
     public void deletePayment(String id) {
         paymentRepository.deleteById(id);
+    }
+
+    public byte[] generatePaymentReport() throws Exception {
+        // 1. Load the JRXML file from resources
+        InputStream reportStream = new ClassPathResource("payment_report.jrxml").getInputStream();
+
+        // 2. Compile the Jasper report from .jrxml to .jasper
+        JasperReport jasperReport = JasperCompileManager.compileReport(reportStream);
+
+        // 3. Fetch data from MongoDB (for example, get all payments)
+        List<Payment> payments = paymentRepository.findAll();
+
+        // 4. Convert the data into a format JasperReports can use
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(payments);
+
+        // 5. Set any parameters if needed (we'll leave it empty for now)
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("ReportTitle", "Payment Report");
+
+        // 6. Fill the report with data and parameters
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+
+        // 7. Export the report to PDF
+        return JasperExportManager.exportReportToPdf(jasperPrint);
     }
 }

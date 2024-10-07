@@ -1,0 +1,77 @@
+<!-- Created with Jaspersoft Studio version 7.0.0.final using JasperReports Library version 7.0.0-b478feaa9aab4375eba71de77b4ca138ad2f62aa  -->
+<jasperReport name="paymentReport" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8b731e70-d915-41c8-9d36-3e82852f0d18">
+	<parameter name="ReportTitle" class="java.lang.String"/>
+	<field name="amount" class="java.lang.Double"/>
+	<field name="currency" class="java.lang.String"/>
+	<field name="username" class="java.lang.String"/>
+	<field name="ponumber" class="java.lang.String"/>
+	<field name="invoicenumber" class="java.lang.String"/>
+	<field name="targetBankAccount" class="java.lang.String"/>
+	<field name="sourceBankAccount" class="java.lang.String"/>
+	<field name="tds" class="java.lang.Integer"/>
+	<field name="status" class="java.lang.String"/>
+	<field name="paymentdate" class="java.lang.String"/>
+	<title height="50">
+		<element kind="staticText" uuid="bd3fa710-f631-44b9-812a-745db561add7" x="0" y="0" width="555" height="50" fontSize="18.0" bold="true">
+			<text><![CDATA[Payment Report]]></text>
+		</element>
+	</title>
+	<columnHeader height="30">
+		<element kind="staticText" uuid="1c0a8cab-6915-478f-87ef-f1aebff20575" x="0" y="0" width="80" height="30" bold="true">
+			<text><![CDATA[Amount]]></text>
+		</element>
+		<element kind="staticText" uuid="1631c773-29c2-4bb5-94b5-31261fea6502" x="80" y="0" width="80" height="30" bold="true">
+			<text><![CDATA[Currency]]></text>
+		</element>
+		<element kind="staticText" uuid="07bddfdb-8ddd-482c-abc2-5483f07b7b2f" x="160" y="0" width="80" height="30" bold="true">
+			<text><![CDATA[Username]]></text>
+		</element>
+		<element kind="staticText" uuid="33c58298-4400-4898-be51-d3db87300eeb" x="240" y="0" width="80" height="30" bold="true">
+			<text><![CDATA[PO Number]]></text>
+		</element>
+		<element kind="staticText" uuid="ee17af94-8995-4ac2-8539-dd9d14f8d31c" x="320" y="0" width="80" height="30" bold="true">
+			<text><![CDATA[Invoice Number]]></text>
+		</element>
+		<element kind="staticText" uuid="e6891c2e-16a3-475a-9a35-5f212dec098c" x="400" y="0" width="80" height="30" bold="true">
+			<text><![CDATA[Status]]></text>
+		</element>
+		<element kind="staticText" uuid="0dbbcaa1-f0a5-4638-9a62-dfbde34accda" x="480" y="0" width="80" height="30" bold="true">
+			<text><![CDATA[Date]]></text>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="30">
+			<element kind="textField" uuid="f2fd0ba4-e8a0-4224-bc02-c167e2261f18" x="0" y="0" width="80" height="30">
+				<expression><![CDATA[$F{amount}]]></expression>
+			</element>
+			<element kind="textField" uuid="50e3e401-a7b1-49ce-9857-2e663cf1c23d" x="80" y="0" width="80" height="30">
+				<expression><![CDATA[$F{currency}]]></expression>
+			</element>
+			<element kind="textField" uuid="a97ff2c4-bb49-45d5-95e9-13b51ae108bc" x="160" y="0" width="80" height="30">
+				<expression><![CDATA[$F{username}]]></expression>
+			</element>
+			<element kind="textField" uuid="f9c605b6-9237-43b7-b2fa-d0093d230fcb" x="240" y="0" width="80" height="30">
+				<expression><![CDATA[$F{ponumber}]]></expression>
+			</element>
+			<element kind="textField" uuid="af7f3c85-0757-4f7b-bd35-7a894ff5dc63" x="320" y="0" width="80" height="30">
+				<expression><![CDATA[$F{invoicenumber}]]></expression>
+			</element>
+			<element kind="textField" uuid="273651d4-7b29-4abf-8bb0-9873b6090671" x="400" y="0" width="80" height="30">
+				<expression><![CDATA[$F{status}]]></expression>
+			</element>
+			<element kind="textField" uuid="b1ac440f-5994-4315-a413-fc2e78070113" x="480" y="0" width="80" height="30">
+				<expression><![CDATA[$F{paymentdate}]]></expression>
+			</element>
+		</band>
+	</detail>
+	<pageFooter height="20">
+		<element kind="staticText" uuid="6ee02f33-06f4-492a-8d6d-c4cdca2736f3" x="0" y="0" width="555" height="20" fontSize="10.0" bold="true">
+			<text><![CDATA[End of Report]]></text>
+		</element>
+	</pageFooter>
+	<summary height="61">
+		<element kind="textField" uuid="42b8f523-8f4d-4fbf-a4c5-4d9e79fd791f" x="481" y="41" width="100" height="20">
+			<expression><![CDATA[Signature]]></expression>
+		</element>
+	</summary>
+</jasperReport>
